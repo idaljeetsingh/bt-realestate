@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load humanize %}
+{% block title %} | Welcome {% endblock %}
 {% block content %}
     <!-- Showcase -->
     <section id="showcase">
@@ -65,6 +66,10 @@
         </div>
     </section>
 
+    <!-- Alerts -->
+    {% include 'partials/_alerts.html' %}
+
+
     <!-- Listings -->
     <section id="listings" class="py-5">
         <div class="container">
@@ -77,14 +82,15 @@
                                 <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="">
                                 <div class="card-img-overlay">
                                     <h2>
-                                        <span class="badge badge-secondary text-white">${{listing.price | intcomma}}</span>
+                                        <span class="badge badge-secondary text-white">${{ listing.price | intcomma }}</span>
                                     </h2>
                                 </div>
                                 <div class="card-body">
                                     <div class="listing-heading text-center">
                                         <h4 class="text-primary">{{ listing.title }}</h4>
                                         <p>
-                                            <i class="fas fa-map-marker text-secondary"></i> {{ listing.city }} {{ listing.state }}, {{ listing.zip_code }}</p>
+                                            <i class="fas fa-map-marker text-secondary"></i> {{ listing.city }} {{ listing.state }}, {{ listing.zip_code }}
+                                        </p>
                                     </div>
                                     <hr>
                                     <div class="row py-2 text-secondary">
@@ -115,7 +121,8 @@
                                         </div>
                                     </div>
                                     <hr>
-                                    <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
+                                    <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More
+                                        Info</a>
                                 </div>
                             </div>
                         </div>
